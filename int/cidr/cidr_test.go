@@ -13,21 +13,39 @@ var parseTests = []struct {
 	err   error
 }{
 	{
-		"192.168.1.0/32 is a valid IP and subnet",
+		"192.168.1.0/32 is a valid subnet",
 		"192.168.1.0/32",
 		true,
 		nil,
 	},
 	{
-		"256.256.256.256/256 is not a valid IP and subnet",
+		"256.256.256.256/256 is not a valid subnet",
 		"256.256.256.256/256",
 		false,
 		nil,
 	},
 	{
-		"255.255.255.250/3 is a valid IP and subnet",
-		"255.255.255.250/3",
+		"255.255.255.250/32 is a valid subnet",
+		"255.255.255.250/32",
 		true,
+		nil,
+	},
+	{
+		"0.0.0.0/0 is a valid subnet",
+		"0.0.0.0/0",
+		true,
+		nil,
+	},
+	{
+		"0.0.0.0/33 is not a valid subnet",
+		"0.0.0.0/33",
+		false,
+		nil,
+	},
+	{
+		"0.0.0.0/-1 is not a valid subnet",
+		"0.0.0.0/-1",
+		false,
 		nil,
 	},
 }
