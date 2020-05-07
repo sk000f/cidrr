@@ -66,3 +66,14 @@ func TestValidate(t *testing.T) {
 	}
 
 }
+
+func TestParse(t *testing.T) {
+	t.Run("192.168.1.0/26 returns correct network ID", func(t *testing.T) {
+		got := cidr.Parse("192.168.1.0/26")
+		want := "192.168.1.0"
+
+		if got != want {
+			t.Errorf("got %v; want %v", got, want)
+		}
+	})
+}
