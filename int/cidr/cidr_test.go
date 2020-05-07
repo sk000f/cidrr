@@ -50,10 +50,10 @@ var parseTests = []struct {
 	},
 }
 
-func TestParse(t *testing.T) {
+func TestValidate(t *testing.T) {
 	for _, tt := range parseTests {
 		t.Run(tt.name, func(t *testing.T) {
-			got, err := cidr.Parse(tt.input)
+			got, err := cidr.Validate(tt.input)
 
 			if err != nil {
 
